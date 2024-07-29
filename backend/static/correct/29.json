@@ -1,0 +1,12 @@
+{
+    "id": "29",
+    "created_at": "2024-05-17T19:35:10.833123",
+    "image_path": "static/images/29.png",
+    "entry": {
+        "full_name": "Emily Roberts",
+        "company_name": "Advanced Tech Innovations, Inc.",
+        "position_name": "Product Development",
+        "address": "350 Fifth Avenue, 34th Floor, New York, NY 10118, USA",
+        "email": "emily.roberts@advancedtech.com"
+    }
+}

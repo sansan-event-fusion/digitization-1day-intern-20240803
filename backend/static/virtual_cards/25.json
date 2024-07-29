@@ -1,0 +1,12 @@
+{
+    "id": "25",
+    "created_at": "2024-05-17T19:35:10.832486",
+    "image_path": "static/images/25.png",
+    "entry": {
+        "full_name": "Sophia Martinez",
+        "company_name": "Martinez Arts Collective        ",
+        "position_name": "Creative Arts",
+        "address": "Address: 250 Riverside Plaza, Austin, TX",
+        "email": "Email: sophia.martinez@martinezarts.com"
+    }
+}

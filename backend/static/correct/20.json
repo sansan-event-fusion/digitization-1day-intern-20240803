@@ -1,0 +1,12 @@
+{
+    "id": "20",
+    "created_at": "2024-05-17T19:35:10.831705",
+    "image_path": "static/images/20.png",
+    "entry": {
+        "full_name": "小林 明美",
+        "company_name": "小野製薬株式会社",
+        "position_name": "医薬品開発部",
+        "address": "北海道札幌市中央区南18条西16-2-1",
+        "email": "akemi.kobayashi@ono-pharma.co.jp"
+    }
+}

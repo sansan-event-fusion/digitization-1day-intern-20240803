@@ -1,0 +1,12 @@
+{
+    "id": "2",
+    "created_at": "2024-05-17T19:35:10.828837",
+    "image_path": "static/images/2.png",
+    "entry": {
+        "full_name": "高橋 一郎",
+        "company_name": "グローバルファイナンス株式会社",
+        "position_name": "取締役 CFO",
+        "address": "大阪府大阪市北区梅田3-3-10",
+        "email": "ichiro.takahashi@globalfin.co.jp"
+    }
+}

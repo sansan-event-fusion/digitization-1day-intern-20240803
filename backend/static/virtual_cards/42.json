@@ -1,0 +1,12 @@
+{
+    "id": "42",
+    "created_at": "2024-05-17T19:35:10.835175",
+    "image_path": "static/images/42.png",
+    "entry": {
+        "full_name": "Mr. Daniel Smith",
+        "company_name": "Innovative Tech Solutions \"Driving the Future of Tech\"",
+        "position_name": "Research and Development",
+        "address": "1220 Innovation Drive, Silicon Valley, CA",
+        "email": "daniel.smith@innovatech.com"
+    }
+}
