@@ -19,4 +19,5 @@ class AddressNormalizer:
                 >>> AddressNormalizer().normalize("  東京都渋谷区渋谷1-2-3  ")
                 "東京都渋谷区渋谷1-2-3"
         """
+        address = address.replace("Address: ", "")
         return address.strip()

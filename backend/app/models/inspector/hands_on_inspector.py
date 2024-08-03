@@ -22,4 +22,6 @@ class Inspector(BaseInspector):
         if model.entry.email.endswith('.c0m'):
             result.inspect(EntryItems.email)
 
+        
+
         return result

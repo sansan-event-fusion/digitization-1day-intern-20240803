@@ -2,6 +2,7 @@
 会社名のノーマライズを行うクラスを提供するモジュール。
 """
 import unicodedata
+import re
 
 class CompanyNameNormalizer:
     """CompanyNameNormalizer
@@ -20,4 +21,6 @@ class CompanyNameNormalizer:
                 "株式会社テスト"
         """
         company_name = unicodedata.normalize('NFKC', company_name)
+
+        company_name = company_name.replace("(株)", "株式会社").replace("(有)", "有限会社")
         return company_name.strip()
