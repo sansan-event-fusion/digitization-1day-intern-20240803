@@ -15,7 +15,7 @@ class BaseRepository(Generic[T]):
 
     def __read_json_file(self, file_path: str) -> Any | None:
         try:
-            with open(file_path, "r") as file:
+            with open(file_path, "r", encoding="utf-8_sig") as file:
                 content = json.load(file)
                 return content
         except FileNotFoundError:
