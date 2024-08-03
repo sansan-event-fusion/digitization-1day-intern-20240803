@@ -16,6 +16,11 @@ dependencies = [
     "requests>=2.32.3",
 ]
 
+
+[tool.rye.scripts]
+serve = "uvicorn app.main:app --reload"
+
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
