@@ -1,3 +1,4 @@
+import re
 import unicodedata
 
 from app.models.entry import EntryItems
@@ -18,5 +19,8 @@ class Inspector(BaseInspector):
                 break
 
         # TODO: ここにロジックを追加する
-
+        if re.search(r"\.c0m$", model.entry.email):
+            result.inspect(EntryItems.email)
+        print("debug-------------------------------")
+        print(result.inspected_items)
         return result
