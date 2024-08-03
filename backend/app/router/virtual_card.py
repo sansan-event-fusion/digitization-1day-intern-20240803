@@ -3,7 +3,9 @@ from datetime import datetime
 
 from fastapi import APIRouter, HTTPException, Response, status
 
-from app.models.inspector.inspector import Inspector
+#from app.models.inspector.inspector import Inspector l7に差し替え
+from app.models.inspector.hands_on_inspector import Inspector
+
 from app.models.normalizer.entries import EntryNormalizer
 from app.models.virtual_card import VirtualCardModel
 from app.repositories.delivered import DeliveredRepository

@@ -19,4 +19,12 @@ class CompanyNameNormalizer:
                 >>> CompanyNameNormalizer().normalize("  株式会社テスト  ")
                 "株式会社テスト"
         """
+        import unicodedata
+        for char in range(len(company_name)):
+            if unicodedata.east_asian_width(company_name[char] )== 'F':
+                normarized = unicodedata.normalize('NFKC', company_name)
+                return normarized
+                break
+
+            
         return company_name.strip()

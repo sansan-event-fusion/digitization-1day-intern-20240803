@@ -18,5 +18,7 @@ class Inspector(BaseInspector):
                 break
 
         # TODO: ここにロジックを追加する
+        if model.entry.email.split(".")[-1] == "c0m":
+            result.inspect(EntryItems.email)
 
         return result
