@@ -1,7 +1,7 @@
 """app.modules.normalizer.company_name
 会社名のノーマライズを行うクラスを提供するモジュール。
 """
-
+import unicodedata
 
 class CompanyNameNormalizer:
     """CompanyNameNormalizer
@@ -19,4 +19,7 @@ class CompanyNameNormalizer:
                 >>> CompanyNameNormalizer().normalize("  株式会社テスト  ")
                 "株式会社テスト"
         """
-        return company_name.strip()
+        
+        company_name = unicodedata.normalize('NFKC',company_name).strip()
+        
+        return company_name

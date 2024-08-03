@@ -13,10 +13,14 @@ class Inspector(BaseInspector):
         # 条件に合致したら EntryItems.company_name を渡して実行
         # inspected_items を更新してくれる
         for char in model.entry.company_name:
-            if unicodedata.east_asian_width(char) == "F":
+            if unicodedata.east_asian_width(char) == "F": # 会社名が大文字になっているか検知
                 result.inspect(EntryItems.company_name)
                 break
 
         # TODO: ここにロジックを追加する
+        # emailの最後がcomかどうかを検知する
+        if model.entry.email.split('.')[-1] != 'com':
+            result.inspect(EntryItems.email)
 
+            
         return result
