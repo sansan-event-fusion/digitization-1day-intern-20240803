@@ -51,6 +51,63 @@ class Inspector(BaseInspector):
             if is_combined:
                 result.inspect(eval(f"EntryItems.{prop}"))
 
+        # [work] 部署名の要素が会社名にふくまれていることを検知
+        position_keywords = ["店", "支店", "営業所", "事業所", "研究所", "部"]
+        for pos_keyword in position_keywords:
+            if pos_keyword in model.entry.company_name:
+                result.inspect(EntryItems.company_name)
+                result.inspect(EntryItems.position_name)
+
+        # [work] ラベルの検知（email: の部分が要らない）
+        target_labels = ["address", "email"]
+        for t_label in target_labels:
+            lower_data = model.entry.dict().get(t_label).lower()
+            if t_label in lower_data:
+                result.inspect(eval(f"EntryItems.{t_label}"))
+
+        # [work] invalid mail address の検知
+        if model.entry.email.startswith("http://"):
+            result.inspect(EntryItems.email)
+        if model.entry.email.startswith("https://"):
+            result.inspect(EntryItems.email)
+        if "," in model.entry.email:
+            result.inspect(EntryItems.email)
+
+        # [work] 誤った会社名の検知
+        # アドバイス：inspectorはブラックリスト方式で良い
+        incorrect_company_names = ["キャノン", "ブリジストン"]
+        for incor_c_name in incorrect_company_names:
+            if incor_c_name in model.entry.company_name:
+                result.inspect(EntryItems.company_name)
+
+        # [work] スローガン？の検知
+        # クォートがあればダメ？
+        if "\"" in model.entry.company_name:
+            result.inspect(EntryItems.company_name)
+        if "\'" in model.entry.company_name:
+            result.inspect(EntryItems.company_name)
+        if "”" in model.entry.company_name:
+            result.inspect(EntryItems.company_name)
+        if "’" in model.entry.company_name:
+            result.inspect(EntryItems.company_name)
+
+        # [work] 街路番号の検知
+        ng_words = ["丁目", "番地", "号"]
+        for ng_word in ng_words:
+            if ng_word in model.entry.address:
+                result.inspect(EntryItems.address)
+
+        # [work] 街路番号その２
+        # 一の二の三 を検知したい
+        kanji_nums = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
+        # {}の{}の{} を検知したい
+        for i in kanji_nums:
+            for j in kanji_nums:
+                for k in kanji_nums:
+                    ng_word = f"{i}の{j}の{k}"
+                    if ng_word in model.entry.address:
+                        result.inspect(EntryItems.address)
+
         # DEBUG:
         # print("# Ln:inspect()")
 
