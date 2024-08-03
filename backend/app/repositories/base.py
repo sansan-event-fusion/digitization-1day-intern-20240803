@@ -42,7 +42,7 @@ class BaseRepository(Generic[T]):
 
     def save(self, id: str, model: T) -> None:
         file_name = os.path.join(self.path, f"{id}.json")
-        with open(file_name, "w") as file:
+        with open(file_name, "w", encoding="utf-8_sig") as file:
             file.write(model.json())
 
     def delete(self, id) -> None:
