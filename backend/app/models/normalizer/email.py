@@ -19,4 +19,6 @@ class EmailNormalizer:
                 >>> EmailNormalizer().normalize(" expmple@example.com ")
                 "example@example.com"
         """
-        return email.strip()
+        print(email)
+        email = email.replace("c0m", "com")
+        return email
