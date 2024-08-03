@@ -24,9 +24,12 @@ class BaseRepository(Generic[T]):
         except json.JSONDecodeError:
             print(f"File {file_path} is not a valid JSON file")
             return None
+        except Exception as e:
+            print(e)
 
     def get(self, id) -> Any | None:
-        file_path = os.path.join(self.path, f"{id}.json")
+        file_path = f"{self.path}/{id}.json"
+        print(file_path)
         return self.__read_json_file(file_path)
 
     def get_all(self) -> List[Any]:
@@ -41,8 +44,8 @@ class BaseRepository(Generic[T]):
         return result
 
     def save(self, id: str, model: T) -> None:
-        file_name = os.path.join(self.path, f"{id}.json")
-        with open(file_name, "w") as file:
+        file_name = f"{self.path}/{id}.json"
+        with open(file_name, "w", encoding="utf_8_sig") as file:
             file.write(model.json())
 
     def delete(self, id) -> None:

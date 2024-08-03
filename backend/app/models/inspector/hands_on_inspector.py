@@ -21,6 +21,4 @@ class Inspector(BaseInspector):
         # TODO: ここにロジックを追加する
         if re.search(r"\.c0m$", model.entry.email):
             result.inspect(EntryItems.email)
-        print("debug-------------------------------")
-        print(result.inspected_items)
         return result
