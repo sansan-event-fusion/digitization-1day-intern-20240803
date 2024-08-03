@@ -3,6 +3,8 @@
 """
 
 
+import unicodedata
+
 class CompanyNameNormalizer:
     """CompanyNameNormalizer
     会社名のノーマライズを行う。
@@ -19,4 +21,6 @@ class CompanyNameNormalizer:
                 >>> CompanyNameNormalizer().normalize("  株式会社テスト  ")
                 "株式会社テスト"
         """
-        return company_name.strip()
+
+        converted_text: str = unicodedata.normalize('NFKC', company_name)
+        return converted_text
