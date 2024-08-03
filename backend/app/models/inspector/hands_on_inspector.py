@@ -19,8 +19,11 @@ class Inspector(BaseInspector):
 
         # TODO: ここにロジックを追加する
         # emailの最後がcomかどうかを検知する
-        if model.entry.email.split('.')[-1] != 'com':
+        if model.entry.email.split('.')[-1] == 'c0m':
             result.inspect(EntryItems.email)
 
-            
+        
+    
+
+
         return result

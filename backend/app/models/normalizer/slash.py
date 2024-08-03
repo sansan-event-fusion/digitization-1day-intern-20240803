@@ -1,0 +1,3 @@
+# スラッシュがあるときのノーマライザー
+class SlashNormalizer:
+    pass

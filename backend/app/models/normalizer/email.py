@@ -19,4 +19,13 @@ class EmailNormalizer:
                 >>> EmailNormalizer().normalize(" expmple@example.com ")
                 "example@example.com"
         """
+        # Email:を削除
+        email = email.replace('Email:', '')
+
+        # ,を.に変換
+        email = email.replace(',', '.')
+
+
+
+
         return email.strip()

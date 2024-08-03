@@ -1,7 +1,7 @@
 """app.models.normalizer.position_name
 役職名のノーマライズを行うクラスを提供するモジュール。
 """
-
+import re
 
 class PositionNameNormalizer:
     """PositionNameNormalizer
@@ -19,4 +19,11 @@ class PositionNameNormalizer:
                 >>> PositionNameNormalizer().normalize("  部長  ")
                 "部長"
         """
+
+        # ポジション + ()のものはかっこを削除
+        position_name = position_name.split('(')[0]
+        position_name = position_name.split('（')[0]
+
+        #
+
         return position_name.strip()
