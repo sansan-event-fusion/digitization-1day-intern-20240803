@@ -22,5 +22,6 @@ class CompanyNameNormalizer:
                 "株式会社テスト"
         """
 
-        converted_text: str = unicodedata.normalize('NFKC', company_name)
-        return converted_text
+        company_name = unicodedata.normalize('NFKC', company_name)
+
+        return company_name
