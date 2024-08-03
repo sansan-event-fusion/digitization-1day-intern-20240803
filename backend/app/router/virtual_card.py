@@ -1,8 +1,6 @@
 import uuid
 from datetime import datetime
 
-from fastapi import APIRouter, HTTPException, Response, status
-
 from app.models.inspector.inspector import Inspector
 from app.models.normalizer.entries import EntryNormalizer
 from app.models.virtual_card import VirtualCardModel
@@ -14,6 +12,7 @@ from app.schemas.virtual_card import (
     VirtualCardCreate,
     VirtualCardCreateBulk,
 )
+from fastapi import APIRouter, HTTPException, Response, status
 
 router = APIRouter()
 

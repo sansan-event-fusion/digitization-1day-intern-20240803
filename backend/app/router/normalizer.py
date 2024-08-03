@@ -1,7 +1,6 @@
-from fastapi import APIRouter, HTTPException
-
 from app.models.entry import EntryModel
 from app.models.normalizer.entries import EntryNormalizer
+from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
 

@@ -3,7 +3,6 @@
 """
 
 import pytest
-
 from app.models.normalizer.company_name import CompanyNameNormalizer
 
 normalizer = CompanyNameNormalizer()

@@ -1,6 +1,5 @@
-from pydantic import BaseModel, Field
-
 from app.models.entry import EntryModel
+from pydantic import BaseModel, Field
 
 
 class VirtualCardModel(BaseModel):

@@ -1,9 +1,8 @@
-from app.repositories.virtual_card import VirtualCardRepository
-from app.repositories.delivered import DeliveredRepository
-from app.repositories.inspector import InspectorRepository
 import requests
 from app.models.virtual_card import VirtualCardModel
-
+from app.repositories.delivered import DeliveredRepository
+from app.repositories.inspector import InspectorRepository
+from app.repositories.virtual_card import VirtualCardRepository
 
 STATIC_DIR = "static"
 BACKEND_ENDPOINT = "http://localhost:8000"

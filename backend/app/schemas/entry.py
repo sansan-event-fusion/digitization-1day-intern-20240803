@@ -1,7 +1,7 @@
 from typing import Optional
-from pydantic import BaseModel
 
 from app.models.entry import EntryModel
+from pydantic import BaseModel
 
 
 class EntryBase(BaseModel):

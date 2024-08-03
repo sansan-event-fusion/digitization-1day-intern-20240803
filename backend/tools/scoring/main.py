@@ -1,8 +1,9 @@
+import argparse
+import time
+
+import requests
 from start import StartCommand
 from test import TestCommand
-import argparse
-import requests
-import time
 
 
 def main(args):

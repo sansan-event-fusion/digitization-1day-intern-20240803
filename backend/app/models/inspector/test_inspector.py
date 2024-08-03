@@ -34,7 +34,6 @@ def make_entry(**kwargs):
             [EntryItems.email],
         ),
     ],
-
 )
 def test_email_inspector(model, expected):
     result = inspector.inspect(model)

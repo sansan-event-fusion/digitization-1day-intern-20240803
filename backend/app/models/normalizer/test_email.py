@@ -3,7 +3,6 @@
 """
 
 import pytest
-
 from app.models.normalizer.email import EmailNormalizer
 
 normalizer = EmailNormalizer()

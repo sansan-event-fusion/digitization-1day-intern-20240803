@@ -1,16 +1,16 @@
-import difflib
-from app.repositories.delivered import DeliveredRepository
-from app.repositories.correct import CorrectRepository
-from app.repositories.inspector import InspectorRepository
-from app.models.virtual_card import VirtualCardModel
-from app.models.entry import EntryModel
-from app.models.inspector.base import InspectedVirtualCardModel
-from typing import List, TypeGuard
-from pydantic import BaseModel
-import os
 import contextlib
 import csv
+import difflib
+import os
+from typing import List, TypeGuard
 
+from app.models.entry import EntryModel
+from app.models.inspector.base import InspectedVirtualCardModel
+from app.models.virtual_card import VirtualCardModel
+from app.repositories.correct import CorrectRepository
+from app.repositories.delivered import DeliveredRepository
+from app.repositories.inspector import InspectorRepository
+from pydantic import BaseModel
 
 STATIC_DIR = "static"
 
@@ -85,7 +85,7 @@ class CollationResult(BaseModel):
             c = ""
             match self.item_type_result(item_type):
                 case "inspected":
-                    c = COLOR["yellow"] + " \U0001F50D" + COLOR["reset"]
+                    c = COLOR["yellow"] + " \U0001f50d" + COLOR["reset"]
                 case "correct":
                     c = COLOR["green"] + " \u2713" + COLOR["reset"]
                 case "failed":

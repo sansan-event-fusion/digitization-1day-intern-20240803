@@ -21,8 +21,12 @@ class Inspector(BaseInspector):
             ),
             InspectionRule(
                 rules=[
-                    InspectionResetRule(item=EntryItems.company_name, value=r"Sansan株式会社"),
-                    InspectionResetRule(item=EntryItems.position_name, value=r"個人情報保護士"),
+                    InspectionResetRule(
+                        item=EntryItems.company_name, value=r"Sansan株式会社"
+                    ),
+                    InspectionResetRule(
+                        item=EntryItems.position_name, value=r"個人情報保護士"
+                    ),
                 ],
                 inspected_items=[EntryItems.position_name],
             ),
@@ -31,7 +35,10 @@ class Inspector(BaseInspector):
     def __inspection_by_single_rule(
         self, model: InspectedVirtualCardModel, rule: InspectionRule
     ) -> InspectedVirtualCardModel:
-        if all(re.search(rule.value, getattr(model.entry, rule.item.value)) for rule in rule.rules):
+        if all(
+            re.search(rule.value, getattr(model.entry, rule.item.value))
+            for rule in rule.rules
+        ):
             model.inspect(*rule.inspected_items)
         return model
 

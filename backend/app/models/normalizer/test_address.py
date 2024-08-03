@@ -3,7 +3,6 @@
 """
 
 import pytest
-
 from app.models.normalizer.address import AddressNormalizer
 
 normalizer = AddressNormalizer()

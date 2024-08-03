@@ -1,9 +1,8 @@
-from fastapi import APIRouter, HTTPException, status
 from typing import List
 
 from app.repositories.delivered import DeliveredRepository
 from app.schemas.virtual_card import VirtualCard
-
+from fastapi import APIRouter, HTTPException, status
 
 router = APIRouter()
 

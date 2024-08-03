@@ -1,11 +1,10 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-
 from app.router.delivered import router as delivered_router
 from app.router.inspector import router as inspector_router
 from app.router.normalizer import router as normalizer_router
 from app.router.virtual_card import router as virtual_card_router
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 

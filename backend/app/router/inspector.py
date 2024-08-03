@@ -1,11 +1,11 @@
-from fastapi import APIRouter, HTTPException, Response, status
 from datetime import datetime
 
-from app.models.inspector.base import InspectionResult, InspectedVirtualCardModel
+from app.models.inspector.base import InspectedVirtualCardModel, InspectionResult
 from app.models.inspector.inspector import Inspector
 from app.models.virtual_card import VirtualCardModel
 from app.repositories.delivered import DeliveredRepository
 from app.repositories.inspector import InspectorRepository
+from fastapi import APIRouter, HTTPException, Response, status
 
 router = APIRouter()
 

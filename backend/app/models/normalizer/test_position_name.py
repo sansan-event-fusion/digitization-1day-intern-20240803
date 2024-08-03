@@ -3,7 +3,6 @@
 """
 
 import pytest
-
 from app.models.normalizer.position_name import PositionNameNormalizer
 
 normalizer = PositionNameNormalizer()

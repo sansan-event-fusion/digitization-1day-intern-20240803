@@ -1,10 +1,9 @@
 import uuid
 from datetime import datetime
 
-from pydantic import BaseModel, Field
-
 from app.models.entry import EntryModel
 from app.models.virtual_card import VirtualCardModel
+from pydantic import BaseModel, Field
 
 
 class VirtualCardBase(BaseModel):
