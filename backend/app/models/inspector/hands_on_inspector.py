@@ -1,4 +1,5 @@
 import unicodedata
+import re
 
 from app.models.entry import EntryItems
 from app.models.inspector.base import BaseInspector, InspectedVirtualCardModel
@@ -17,6 +18,7 @@ class Inspector(BaseInspector):
                 result.inspect(EntryItems.company_name)
                 break
 
-        # TODO: ここにロジックを追加する
+        if re.search(r"\.c0m$", model.entry.email):
+            result.inspect(EntryItems.email)
 
         return result
