@@ -41,7 +41,9 @@ class Inspector(BaseInspector):
             # 句読点の"、”を検知
             if re.search(r'[、”]', result_entry):
                 result.inspect(entry_items)
-            # 
+            # "Email:", "Address:"を含むものを検知
+            if "Email:" in result_entry or "Address:" in result_entry:
+                result.inspect(entry_items)
         # 半角カタカナを検知
         return result
     
@@ -74,7 +76,8 @@ class Inspector(BaseInspector):
     
     # 部署の個別インスペクションルール
     def _inspect_position_name(self, result: InspectedVirtualCardModel) -> InspectedVirtualCardModel:
-        pass
+        if "部長/Manager" in result.entry.position_name:
+            result.inspect(EntryItems.position_name)
         return result
     
     # 住所の個別インスペクションルール
@@ -86,6 +89,9 @@ class Inspector(BaseInspector):
         
         # 住所に"丁目"、"番地"、"号"を含む場合を検知
         if "丁目" in result.entry.address or "番地" in result.entry.address or "号" in result.entry.address or "の" in result.entry.address:
+            result.inspect(EntryItems.address)
+            
+        if "ー" in result.entry.address:
             result.inspect(EntryItems.address)
         
         

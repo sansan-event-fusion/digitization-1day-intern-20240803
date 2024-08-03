@@ -22,6 +22,7 @@ class EntryNormalizer:
         """
         if not isinstance(entry, EntryModel):
             raise ValueError("入力が不正です")
+        
         entry.full_name = FullNameNormalizer().normalize(entry.full_name)
         entry.email = EmailNormalizer().normalize(entry.email)
         entry.company_name = CompanyNameNormalizer().normalize(entry.company_name)
