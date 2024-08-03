@@ -1,7 +1,7 @@
 """app.models.normalizer.name
 氏名のノーマライズを行うクラスを提供するモジュール。
 """
-
+import unicodedata
 
 class FullNameNormalizer:
     """FullNameNormalizer
@@ -19,6 +19,7 @@ class FullNameNormalizer:
                 >>> NameNormalizer().normalize(" 田中　太郎 ")
                 "田中　太郎"
         """
-
-        full_name = full_name.replace("Dr.", "").replace("Mr.", "")
+        
+        #full_name = unicodedata.normalize('NFKC', full_name)
+        full_name = full_name.replace("(Dr.)", "").replace("(Mr.)", "").replace("Dr.", "").replace("Mr.", "")
         return full_name.strip()

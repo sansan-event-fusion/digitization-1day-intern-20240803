@@ -20,5 +20,5 @@ class EmailNormalizer:
                 "example@example.com"
         """
         email = email.lower()
-        email = email.replace("email: ", "") # 上で小文字になってるからEはeに
+        email = email.replace("email: ", "").replace(",", ".") # 上で小文字になってるからEはeに
         return email.strip()
