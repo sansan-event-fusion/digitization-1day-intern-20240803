@@ -17,6 +17,10 @@ class Inspector(BaseInspector):
                 result.inspect(EntryItems.company_name)
                 break
 
+
         # TODO: ここにロジックを追加する
+        # .com(など) が .c0m になってしまっているものを検知
+        if model.entry.email.endswith(".c0m"):
+            result.inspect(EntryItems.email)
 
         return result

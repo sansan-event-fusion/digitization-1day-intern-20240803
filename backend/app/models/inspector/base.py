@@ -1,9 +1,8 @@
 from abc import ABC, abstractmethod
 
-from pydantic import BaseModel, Field
-
 from app.models.entry import EntryItems
 from app.models.virtual_card import VirtualCardModel
+from pydantic import BaseModel, Field
 
 
 class InspectionResetRule(BaseModel):

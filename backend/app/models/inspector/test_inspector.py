@@ -3,7 +3,6 @@
 """
 
 import pytest
-
 from app.models.entry import EntryItems, EntryModel
 from app.models.inspector.hands_on_inspector import Inspector
 from app.models.virtual_card import VirtualCardModel
