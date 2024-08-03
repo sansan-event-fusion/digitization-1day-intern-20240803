@@ -22,7 +22,7 @@ class Inspector(BaseInspector):
 
         # TODO: ここにロジックを追加する
 
-        # c0m を検知する
+        # [hands-on] c0m を検知する
         if model.entry.email.endswith("c0m"):
             result.inspect(EntryItems.email)
         # 解答例：
