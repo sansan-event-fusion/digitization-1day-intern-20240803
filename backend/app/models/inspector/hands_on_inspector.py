@@ -7,6 +7,9 @@ from app.models.virtual_card import VirtualCardModel
 
 class Inspector(BaseInspector):
     def inspect(self, model: VirtualCardModel) -> InspectedVirtualCardModel:
+        # DEBUG:
+        # print("# L0:inspect()")
+
         # 最初になにも検知されていない結果を作成しておく
         result = InspectedVirtualCardModel(**model.model_dump())
 
@@ -18,5 +21,16 @@ class Inspector(BaseInspector):
                 break
 
         # TODO: ここにロジックを追加する
+
+        # c0m を検知する
+        if model.entry.email.endswith("c0m"):
+            result.inspect(EntryItems.email)
+        # 解答例：
+        # import re
+        # if re.search(r"\.c0m$", model.entry.email):
+        #     result.inspect(EntryItems.email)
+
+        # DEBUG:
+        # print("# Ln:inspect()")
 
         return result
