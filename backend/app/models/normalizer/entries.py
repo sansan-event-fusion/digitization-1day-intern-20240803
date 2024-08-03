@@ -1,4 +1,5 @@
 from app.models.entry import EntryModel
+from app.models.normalizer.common import CommonNormalizer
 from app.models.normalizer.address import AddressNormalizer
 from app.models.normalizer.company_name import CompanyNameNormalizer
 from app.models.normalizer.email import EmailNormalizer
@@ -22,7 +23,8 @@ class EntryNormalizer:
         """
         if not isinstance(entry, EntryModel):
             raise ValueError("入力が不正です")
-        
+        for entry_item in [entry.full_name, entry.email, entry.company_name, entry.company_name, entry.address]:
+                entry_item = CommonNormalizer().normalize(entry_item)
         entry.full_name = FullNameNormalizer().normalize(entry.full_name)
         entry.email = EmailNormalizer().normalize(entry.email)
         entry.company_name = CompanyNameNormalizer().normalize(entry.company_name)
