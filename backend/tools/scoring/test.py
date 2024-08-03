@@ -164,14 +164,20 @@ class TestCommand:
 
     def run_all_tests(self):
         # 全ての出力データを取得する
+        print('tset')
         correct_cards = self._get_correct_cards()
+        print('2')
         correct_cards = sorted(correct_cards, key=lambda x: int(x.id))
+        print('test2')
 
         results_for_csv = []
+        print(len(correct_cards))
 
         collation_result_list = CollationResultList(results=[])
         for correct_card in correct_cards:
+            print(correct_card)
             target_card = self._get_target_card(correct_card.id)
+            print(target_card.id)
 
             if target_card is None:
                 raise ValueError(
@@ -207,16 +213,21 @@ class TestCommand:
         self, id
     ) -> VirtualCardModel | InspectedVirtualCardModel | None:
         # inspector と delivered 片方にしかデータが存在せず、存在しない場合は標準出力にエラーが出てしまうので、力技で対応
-        with contextlib.redirect_stdout(open(os.devnull, "w")):
+        #with contextlib.redirect_stdout(open(os.devnull, "w")):
+        try:
             delivered_card = self._get_delivered_card(id)
+            print('deliveredから取得')
             if delivered_card:
                 return delivered_card
 
             inspector_card = self._get_inspector_card(id)
+            print('inspectorから取得')
             if inspector_card:
                 return inspector_card
-
+        except Exception as e:
+            print(e)
             return None
+        return None
 
     def _get_inspector_card(self, id) -> InspectedVirtualCardModel | None:
         return self.inspector_repository.get(id)
@@ -279,7 +290,7 @@ class TestCommand:
 
     def _output_csv(self, results_for_csv):
         os.makedirs("tools/scoring/output", exist_ok=True)
-        with open("tools/scoring/output/results.csv", "w") as f:
+        with open("tools/scoring/output/results.csv", "w",encoding="utf_8_sig") as f:
             writer = csv.DictWriter(f, fieldnames=results_for_csv[0].keys())
             writer.writeheader()
             writer.writerows(results_for_csv)
