@@ -19,4 +19,10 @@ class CompanyNameNormalizer:
                 >>> CompanyNameNormalizer().normalize("  株式会社テスト  ")
                 "株式会社テスト"
         """
-        return unicodedata.normalize('NFKC', company_name).strip()
+        result = unicodedata.normalize('NFKC', company_name).strip()
+        if "(有)" in result:
+            result = self.replace_string(result,"(有)","有限会社")
+        return result
+    
+    def replace_string(self, original_string, target, replacement):
+        return original_string.replace(target, replacement)
