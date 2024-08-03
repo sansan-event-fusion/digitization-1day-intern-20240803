@@ -2,8 +2,8 @@ import uuid
 from datetime import datetime
 
 # from app.models.inspector.inspector import Inspector
-from app.models.inspector.hands_on_inspector import Inspector
-from app.models.normalizer.entries import EntryNormalizer
+from app.models.inspector.hands_on_inspector import InspectorEntryPoint
+from app.models.normalizer.entries import NormalizerEntryPoint
 from app.models.virtual_card import VirtualCardModel
 from app.repositories.delivered import DeliveredRepository
 from app.repositories.inspector import InspectorRepository
@@ -29,14 +29,26 @@ def create_virtual_card_model(param: VirtualCardCreate) -> VirtualCardModel:
 
 
 def format_and_inspect_virtual_card(model: VirtualCardModel) -> None:
-    normalized_entry = EntryNormalizer().normalize(model.entry)
+    normalize_entrypoint = NormalizerEntryPoint()
+    normalized_entry = normalize_entrypoint.normalize_all(model.entry)
+
     if normalized_entry is None:
         raise ValueError("ノーマライズに失敗しました")
+
     model.entry = normalized_entry
 
-    inspected_card_model = Inspector().inspect(model)
+    inspect_entrypoint = InspectorEntryPoint()
+    inspected_card_model = inspect_entrypoint.inspect_all(model)
 
     if inspected_card_model.has_inspected_items:
+        print(normalized_entry.full_name)
+        print(normalized_entry.company_name)
+        print(normalized_entry.email)
+        print(normalized_entry.position_name)
+        print(normalized_entry.address)
+        print(inspected_card_model.inspected_items)
+        print()
+
         InspectorRepository().save(model.id, inspected_card_model)
     else:
         delivered_at = datetime.now().isoformat()

@@ -77,5 +77,5 @@ class InspectedVirtualCardModel(VirtualCardModel, InspectionResult):
 
 class BaseInspector(ABC):
     @abstractmethod
-    def inspect(self, model: VirtualCardModel) -> InspectedVirtualCardModel:
+    def inspect(self, target_text: str) -> list[EntryItems]:
         raise NotImplementedError
