@@ -2,21 +2,12 @@
 氏名のノーマライズを行うクラスを提供するモジュール。
 """
 
+from app.models.normalizer.base import BaseNormalizer
+from app.models.normalizer.rules import strip, nfkcNormalize, noFollowingAlphaNum, noHonorificTitle
 
-class FullNameNormalizer:
+class FullNameNormalizer(BaseNormalizer):
     """FullNameNormalizer
     氏名のノーマライズを行う。
     """
 
-    def normalize(self, full_name: str):
-        """normalize
-        氏名をノーマライズする。
-        Args:
-                text (str): ノーマライズ対象の氏名。
-        Returns:
-                str: ノーマライズ後の氏名。
-        Example:
-                >>> NameNormalizer().normalize(" 田中　太郎 ")
-                "田中　太郎"
-        """
-        return full_name.strip()
+    RULES = [strip, nfkcNormalize, noFollowingAlphaNum, noHonorificTitle]
