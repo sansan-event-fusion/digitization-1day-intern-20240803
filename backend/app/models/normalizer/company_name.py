@@ -25,6 +25,7 @@ class CompanyNameNormalizer:
 
         # 全角英数字を半角英数字に揃える
         # 謎のライブラリに丸投げだけどまあいいでしょう．
+        # ref: https://docs.python.org/ja/3/library/unicodedata.html#unicodedata.normalize
         import unicodedata
         company_name = unicodedata.normalize("NFKC", company_name)
 
