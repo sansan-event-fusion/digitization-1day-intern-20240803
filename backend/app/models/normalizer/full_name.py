@@ -19,4 +19,15 @@ class FullNameNormalizer:
                 >>> NameNormalizer().normalize(" 田中　太郎 ")
                 "田中　太郎"
         """
-        return full_name.strip()
+
+        # [work] 敬称を消す
+        full_name = full_name.replace("(Mr.)", "")
+        full_name = full_name.replace("(Dr.)", "")
+        full_name = full_name.replace("(Ms.)", "")
+        full_name = full_name.replace("Mr.", "")
+        full_name = full_name.replace("Dr.", "")
+        full_name = full_name.replace("Ms.", "")
+
+        full_name = full_name.strip()
+
+        return full_name

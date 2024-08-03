@@ -19,14 +19,20 @@ class CompanyNameNormalizer:
                 >>> CompanyNameNormalizer().normalize("  株式会社テスト  ")
                 "株式会社テスト"
         """
-        # return company_name.strip()
-        # 左右の空白を除去
-        company_name = company_name.strip()
-
-        # 全角英数字を半角英数字に揃える
+        # [hands-on] 全角英数字を半角英数字に揃える
         # 謎のライブラリに丸投げだけどまあいいでしょう．
         # ref: https://docs.python.org/ja/3/library/unicodedata.html#unicodedata.normalize
         import unicodedata
         company_name = unicodedata.normalize("NFKC", company_name)
 
+        # [work] 省略表記を展開
+        company_name = company_name.replace("（株）", "株式会社")
+        company_name = company_name.replace("（有）", "有限会社")
+
+        # [work] 正しい名前
+        company_name = company_name.replace("キャノン", "キヤノン")
+        company_name = company_name.replace("ブリジストン", "ブリヂストン")
+
+        # 左右の空白を除去
+        company_name = company_name.strip()
         return company_name
