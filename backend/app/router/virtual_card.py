@@ -1,7 +1,8 @@
 import uuid
 from datetime import datetime
 
-from app.models.inspector.inspector import Inspector
+# from app.models.inspector.inspector import Inspector
+from app.models.inspector.hands_on_inspector import Inspector
 from app.models.normalizer.entries import EntryNormalizer
 from app.models.virtual_card import VirtualCardModel
 from app.repositories.delivered import DeliveredRepository
@@ -18,12 +19,12 @@ router = APIRouter()
 
 
 def create_virtual_card_model(param: VirtualCardCreate) -> VirtualCardModel:
-    id = uuid.uuid4().hex
+    id_ = uuid.uuid4().hex
     created_at = datetime.now().isoformat()
     model = VirtualCardModel(
-        id=id, image_path=param.image_path, entry=param.entry, created_at=created_at
+        id=id_, image_path=param.image_path, entry=param.entry, created_at=created_at
     )
-    VirtualCardRepository().save(id, model)
+    VirtualCardRepository().save(id_, model)
     return model
 
 
