@@ -40,7 +40,7 @@ class InspectionRule(BaseModel):
         default=[], description="修正が必要な項目名のリスト"
     )
 
-
+# データ化結果が怪しいものを検知し，項目名を保持
 class InspectionResult(BaseModel):
     """
     検証の結果を格納するモデル
@@ -58,7 +58,7 @@ class InspectionResult(BaseModel):
     def has_inspected_items(self) -> bool:
         return len(self.inspected_items) > 0
 
-
+# ()継承してるやつ
 class InspectedVirtualCardModel(VirtualCardModel, InspectionResult):
     def __init__(self, **data):
         super().__init__(**data)
