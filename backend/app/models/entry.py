@@ -1,5 +1,6 @@
 from enum import Enum
 from pydantic import BaseModel, Field
+import re
 
 
 class EntryItems(Enum):
@@ -19,3 +20,15 @@ class EntryModel(BaseModel):
 
     def __init__(self, /, **data: str) -> None:
         super().__init__(**data)
+
+    @property
+    def language(self):
+        """
+        名刺の言語を返す
+        仮置きで、日本語の文字が一つでも含まれていたら日本語とする
+        """
+
+        for item_type in EntryItems:
+            if re.search(r"[ぁ-んァ-ヶｱ-ﾝﾞﾟ一-龠]+", getattr(self, item_type.value)):
+                return "ja"
+        return "en"

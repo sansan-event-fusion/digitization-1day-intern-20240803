@@ -7,6 +7,15 @@ from app.models.normalizer.position_name import PositionNameNormalizer
 
 
 class EntryNormalizer:
+    def __init__(self):
+        self.normalizers = {
+            "full_name": FullNameNormalizer(),
+            "email": EmailNormalizer(),
+            "company_name": CompanyNameNormalizer(),
+            "position_name": PositionNameNormalizer(),
+            "address": AddressNormalizer(),
+        }
+
     def normalize(self, entry: EntryModel):
         """normalize
         入力をノーマライズする。
@@ -22,9 +31,8 @@ class EntryNormalizer:
         """
         if not isinstance(entry, EntryModel):
             raise ValueError("入力が不正です")
-        entry.full_name = FullNameNormalizer().normalize(entry.full_name)
-        entry.email = EmailNormalizer().normalize(entry.email)
-        entry.company_name = CompanyNameNormalizer().normalize(entry.company_name)
-        entry.position_name = PositionNameNormalizer().normalize(entry.position_name)
-        entry.address = AddressNormalizer().normalize(entry.address)
+
+        for item_type, normalizer in self.normalizers.items():
+            setattr(entry, item_type, normalizer.normalize(entry))
+
         return entry
